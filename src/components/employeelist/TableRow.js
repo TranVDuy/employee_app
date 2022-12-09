@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import ModalInfo from "./Modals/ModalCenter";
-import ModalDelete from "./Modals/ModalDelete";
-
+import ModalDelete from './Modals/ModalDelete'
 
 function TableRow({ item }) {
+
     return (
 
         <tr>

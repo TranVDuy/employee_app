@@ -1,21 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {apis} from '../../../API/apis';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {LoadContext} from '../../../Context/Context'
+
 
 function ModalDelete({Employee}) {
     const [show, setShow] = useState(false);
+    const context = useContext(LoadContext)
 
     const handleClose = () => {
         setShow(false)
     };
+
     const handleShow = () => setShow(true);
 
     const handleDeleteEmployee = async () => {
         await apis.deleteEmployee(Employee.id).then((res) => {
             toast.success(res.data.message)
+            context.ChangeLoad()
             handleClose()
         })
     }
