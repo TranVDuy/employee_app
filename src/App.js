@@ -12,9 +12,8 @@ function App() {
       <div className='Row'>
         <ModalAdd />
         <div className="row justify-content-center">
-          {/* <Table /> */}
-
-          <EmployeePaginate/>
+          <Table />
+          {/* <EmployeePaginate/> */}
         </div>
 
       </div>

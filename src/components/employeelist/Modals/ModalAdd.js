@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { apis } from '../../../API/apis';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Valid from "../../MessageValid/Valid";
+import {LoadContext} from '../../../Context/Context'
 
 function ModalAdd() {
+
+    const context = useContext(LoadContext)
+
     const [show, setShow] = useState(false);
     const [inputs, setInputs] = useState({
         employee_name: '',
@@ -45,6 +49,7 @@ function ModalAdd() {
     const handleAddEmployee = async () => {
         await apis.createEmployee(inputs).then((res) => {
             toast.success(res.data.message)
+            context.ChangeLoad()
             handleClose()
         })
             .catch((res) => {

@@ -3,14 +3,18 @@ import TableRow from './TableRow.js'
 import {apis} from '../../API/apis'
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {useContext} from 'react'
+import {LoadContext} from '../../Context/Context'
 
 function Table() {
+
+    const context = useContext(LoadContext)
 
     const [employeeList, setEmployeeList] = useState([])
   
     useEffect(() => {
         getEmployeeList()
-    },[])
+    },[context.loadList])
 
  
     const getEmployeeList = () => {
